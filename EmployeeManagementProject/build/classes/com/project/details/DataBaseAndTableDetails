@@ -1,0 +1,48 @@
+
+
+
+
+
+/////////////////////////////////
+employee_registration
+
+CREATE TABLE `employee_management_project`.`employee_registration` (
+  `NAME` VARCHAR(30) NOT NULL,
+  `FNAME` VARCHAR(30) NOT NULL,
+  `IDNO` VARCHAR(12) NOT NULL,
+  `EMAIL` VARCHAR(50) NULL,
+  `PHONENO` VARCHAR(11) NOT NULL,
+  `ADDRESS` VARCHAR(100) NOT NULL,
+  `SALARY` DOUBLE NOT NULL,
+  `DOJ` DATE NOT NULL,
+  `DESIGNATION` VARCHAR(45) NOT NULL,
+  `FACTORY` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`IDNO`),
+  UNIQUE INDEX `PHONENO_UNIQUE` (`PHONENO` ASC) VISIBLE);
+  
+  
+  
+  // SALARY_MANAGEMENT
+  
+  CREATE TABLE `employee_management_project`.`salary_management` (
+  `IDNO` VARCHAR(12) NOT NULL,
+  `TOTALSALARY` FLOAT NULL,
+  `DEPOSITEDSALARY` FLOAT NULL,
+  `FINALSALARY` FLOAT NULL,
+  PRIMARY KEY (`IDNO`));
+  
+  //LAST_TRANSACTION_MANAGEMENT
+  
+  CREATE TABLE `employee_management_project`.`last_transaction_management` (
+  `IDNO` VARCHAR(12) NOT NULL,
+  `DEPOSITEDMONEY` FLOAT NOT NULL,
+  `DATE` DATE NOT NULL,
+  PRIMARY KEY (`IDNO`));
+  
+  
+  // ANNOUNCEMENTS_MANAGEMENT
+  
+  CREATE TABLE `employee_management_project`.`announcements_managements` (
+  `TITLE` VARCHAR(100) NOT NULL,
+  `MESSAGE` VARCHAR(400) NULL,
+  `DATE` DATE NULL);

@@ -1,0 +1,47 @@
+<web-app>  
+  <welcome-file-list>  
+   <welcome-file>index.jsp</welcome-file>  
+   <welcome-file>default.html</welcome-file>  
+  </welcome-file-list>  
+  
+  <servlet>
+  <servlet-name>EmpRegistration</servlet-name>
+  <servlet-class>com.project.controllers.EmployeeRegistration</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>EmpRegistration</servlet-name>
+  <url-pattern>/empreg</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  <servlet-name>updateAttendance</servlet-name>
+  <servlet-class>com.project.controllers.UpdateAttendance</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>updateAttendance</servlet-name>
+  <url-pattern>/updateAttendance</url-pattern>
+  </servlet-mapping>
+  <!--
+  <servlet>
+  <servlet-name>Attendance</servlet-name>
+  <servlet-class>com.project.controllers.Attendance</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>Attendance</servlet-name>
+  <url-pattern>/http://localhost:3030/EmployeeManagementProject/attendance</url-pattern>
+  </servlet-mapping>-->
+  
+  
+<servlet>
+  <servlet-name>searchEmp</servlet-name>
+  <jsp-file>/SearchEmployee.jsp</jsp-file>
+  </servlet>	
+  
+ <servlet-mapping>
+  <servlet-name>searchEmp</servlet-name>
+  <url-pattern>/search</url-pattern>
+  </servlet-mapping>
+</web-app>  

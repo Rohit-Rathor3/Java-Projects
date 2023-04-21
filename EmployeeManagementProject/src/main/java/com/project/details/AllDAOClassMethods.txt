@@ -1,0 +1,26 @@
+===========com.project.dao============
+1. AnnouncementDAO -> a) public static List<AnnouncementBean> getAnnouncementDetails()
+                      b) public static void insertAnnoucement(AnnouncementBean ann)
+                      c) public static void deleteAnnoucement(String title)
+
+2. AttendanceDAO  -> a) public static List<EmployeeBean> getAllEmployeeForAttendance() 
+                     b) public static List<AttendenceBean> getAttendanceOfParticularDay(String date)
+                     c) public static List<EmployeeBean> getAllIdNo()
+                     d) public static int insertAttendance(AttendenceBean e)
+                     e) public static void updateAttendance(String id , Float attendance , String date) 
+                     f) public static void getTotalAttendance(String id)
+                     g) public static String getInsertingDate()
+
+3. EmployeeDao    -> a) public static void registerEmployee(EmployeeBean emp)
+                     b) public static void updateEmployee(EmployeeBean e)
+                     c) public static List<EmployeeBean> getAllEmployeeForDelete()
+                     d) public static int deleteEmployee(String id)
+                     e) public static List<EmployeeBean> getEmpForUpdate()
+                     f) public static List getEmpByJoiningDate(String d1 ,String d2)
+
+4. SalaryManagementDAO -> a) public static float getTotalAttendanceCount(String id)
+                          b) public static float getSalary(String id)
+                          c) public static float generateTotalSalary(String id)
+                          d) public static float getDepositedSalary(String id)
+                          e) public static float generateFinalSalary(String id) 
+                          f) public static void insertSalary(String id,float depositeSal)

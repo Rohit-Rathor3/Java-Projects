@@ -1,0 +1,5 @@
+package com.rohit.blog.controllers;
+
+public class CommentController {
+
+}

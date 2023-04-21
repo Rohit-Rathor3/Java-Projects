@@ -1,0 +1,19 @@
+package com.rohit.blog.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rohit.blog.services.PostService;
+
+@RestController
+@RequestMapping("/api/post")
+public class PostController {
+
+	@Autowired
+	private PostService postService;
+	// create
+	
+	@PostMapping("/")
+	public ResponseEntity<PostDto> 
+}
