@@ -6,6 +6,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\Java Projects\spring-boot3-jwt"/>
 			<item value="D:\Java Projects\blog-app-apis"/>
 			<item value="C:\Users\rohit\git\InternshipProject"/>
 			<item value="C:\Users\rohit\Downloads\InternshipTask"/>

@@ -14,8 +14,11 @@ import com.rohit.blog.payloads.ApiResponse;
 import com.rohit.blog.payloads.CommentDto;
 import com.rohit.blog.services.CommentService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("/api/comments")
+@SecurityRequirement(name = "bearerAuth")
 public class CommentController {
 	
 	@Autowired

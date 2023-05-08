@@ -28,10 +28,12 @@ import com.rohit.blog.payloads.PostResponse;
 import com.rohit.blog.services.FileService;
 import com.rohit.blog.services.PostService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/post")
+@SecurityRequirement(name = "bearerAuth")
 public class PostController {
 
 	@Autowired

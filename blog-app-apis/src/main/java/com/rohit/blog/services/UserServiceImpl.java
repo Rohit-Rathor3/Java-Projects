@@ -1,15 +1,21 @@
 package com.rohit.blog.services;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.rohit.blog.config.AppConstants;
+import com.rohit.blog.entities.Role;
 import com.rohit.blog.entities.User;
 import com.rohit.blog.exceptions.ResourceNotFoundException;
 import com.rohit.blog.payloads.UserDto;
+import com.rohit.blog.repositories.RoleRepo;
 import com.rohit.blog.repositories.UserRepo;
 
 @Service
@@ -19,10 +25,16 @@ public class UserServiceImpl implements UserService{
 	private UserRepo userRepo;
 	@Autowired
 	private ModelMapper modelMapper;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	@Autowired
+	private RoleRepo roleRepo;
+	
 
 	@Override
 	public UserDto createUser(UserDto userDto) {
 		User user = this.dtoToUser(userDto); 
+		user.setPassword(encoder.encode(userDto.getPassword()));
 		User savedUser = this.userRepo.save(user);
 		return  this.userToDto(savedUser);
 	}
@@ -60,6 +72,26 @@ public class UserServiceImpl implements UserService{
 	public void deleteUser(Integer id) {
       User user = this.userRepo.findById(id).orElseThrow(()->new ResourceNotFoundException("User", "Id", id));
       this.userRepo.delete(user);
+		
+	}
+	
+	@Override
+	public UserDto registerNewUser(UserDto userDto) {
+		User user = this.modelMapper.map(userDto, User.class);
+		
+		//encode password
+		user.setPassword(this.encoder.encode(user.getPassword()));
+		
+		//roles
+		Role role = this.roleRepo.findById(AppConstants.NORMAL_USER).get();
+		Set<Role> roles = new HashSet<>();
+		roles.add(role);
+	    user.setRoles(roles);
+		//user.getRoles().add(role);
+		User newUser = this.userRepo.save(user);
+		return this.modelMapper.map(newUser, UserDto.class);
+		
+		
 		
 	}
 	

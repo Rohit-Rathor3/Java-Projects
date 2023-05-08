@@ -1,0 +1,5 @@
+package com.rohit.blog.repositories;
+
+public interface RoleRepo {
+
+}

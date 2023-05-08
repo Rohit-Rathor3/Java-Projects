@@ -18,10 +18,12 @@ import com.rohit.blog.payloads.ApiResponse;
 import com.rohit.blog.payloads.CategoryDto;
 import com.rohit.blog.services.CategoryService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/categories")
+@SecurityRequirement(name = "bearerAuth")
 public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;

@@ -6,6 +6,7 @@ import com.rohit.blog.payloads.UserDto;
 
 public interface UserService {
 
+	UserDto registerNewUser(UserDto user);
 	UserDto createUser(UserDto user);
 	UserDto updateUser(UserDto user, Integer id);
 	UserDto getUserById(Integer id);

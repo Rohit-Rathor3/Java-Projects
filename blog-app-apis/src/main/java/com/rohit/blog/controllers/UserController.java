@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +20,17 @@ import com.rohit.blog.payloads.ApiResponse;
 import com.rohit.blog.payloads.UserDto;
 import com.rohit.blog.services.UserService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/users/")
+@RequestMapping("/api/users")
 @Validated
+@SecurityRequirement(name = "bearerAuth")
+//@SecurityScheme( name = "Bearer Authentication", type =
+// SecuritySchemeType.HTTP, bearerFormat = "JWT", scheme = "bearer"  )
+@Tag(name = "User", description = "The User API. Contains all the operations that can be performed on a user.")
 public class UserController {
 
 	@Autowired
@@ -34,6 +41,7 @@ public class UserController {
 	@PostMapping("/")
 	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto){
 		UserDto createdUserDto = this.userService.createUser(userDto);
+		System.out.println(createdUserDto.toString());
 		return new ResponseEntity<>(createdUserDto,HttpStatus.CREATED);
 	}
 	
@@ -45,6 +53,7 @@ public class UserController {
 	}
 	
 	// Delete - delete user
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?>  deleteUser(@PathVariable("id") Integer id){
 		this.userService.deleteUser(id);

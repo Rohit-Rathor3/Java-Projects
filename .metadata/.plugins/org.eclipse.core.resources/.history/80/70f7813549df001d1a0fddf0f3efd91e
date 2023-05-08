@@ -1,7 +1,0 @@
-package com.rohit.blog.repositories;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public class CommentRepo implements JpaRepository<T, ID> {
-
-}
